@@ -2,9 +2,7 @@
 <html>
 <head>
     <title>Chandeep Singh</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.css" rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Roboto:400,100' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
     <style>
     body {
         font-family: "Roboto", "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
@@ -15,14 +13,39 @@
         margin-right: 5px;
     }
     </style>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chroma-js/2.4.2/chroma.min.js"></script>
+    <script>
+    function loaded() {
+        console.log("hello!");
+
+        const darken = () => {
+            console.log("DARKEN")
+            const element = document.querySelector("h1");
+            const color = window.getComputedStyle(element).color
+            console.log("Original color: ", color)
+            const darkened_hex = chroma(color).darken().hex()
+            console.log("Darkened color: ", darkened_hex);
+            element.style.color = darkened_hex;
+        }
+
+        console.log("Darken: ", darken);
+
+        const button = document.querySelector("button")
+        console.log("button: ", button);
+        button.onclick = darken
+    }
+
+    window.onload = function() {
+        loaded();
+    }
+    </script>
 </head>
 <body>
-    <h1>Chandeep Singh</h1>
-    <p><a href="https://github.com/csingh"><i class="fa fa-github-alt"></i>Github</a></p>
-    <p><a href="https://ca.linkedin.com/in/csingh91"><i class="fa fa-linkedin-square"></i>LinkedIn</a></p>
-    <p><a href="https://www.facebook.com/chandeep91"><i class="fa fa-facebook-square"></i>Facebook</a></p>
-    <p><a href="https://soundcloud.com/csingh91"><i class="fa fa-soundcloud"></i>SoundCloud</a></p>
-    <p><a href="mailto:s.chandeep@gmail.com"><i class="fa fa-envelope"></i>Email Me</a></p>
-    <p>Website under construction :)</p>
+    <h1 style="color: lightblue">Chandeep Singh</h1>
+    <h2>Hey, what's up?</h2>
+    <p>More things to come!</p>
+
+    <button>Darken</button>
 </body>
 </html>
