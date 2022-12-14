@@ -17,18 +17,25 @@
         margin: 10px auto;
         display: inline-block;
     }
-
-    .primary-color {
-        color: lightblue;
-        background-color: lightblue;
-    }
-    
     </style>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/chroma-js/2.4.2/chroma.min.js"></script>
     <script>
     function loaded() {
         console.log("Loaded!");
+
+        function generatePrimaryColor() {
+            // TODO: use chroma.random, and fudge color so that its "not too dark and not too light" so that we can generate darker and lighter alternatives. Can probably just adjust the luminance range?
+            return 'lightblue'
+        }
+
+        function generateDarkerColor(colorStr) {
+            return chroma(colorStr).darken().hex();
+        }
+
+        function generateLighterColor(colorStr) {
+            return chroma(colorStr).brighten().hex();
+        }
 
         function darken(querySelectorStr) {
             console.log("DARKEN ", querySelectorStr)
@@ -43,11 +50,23 @@
             });
         }
 
-        console.log("Darken: ", darken);
+        function assignColor(querySelectorStr, colorStr) {
+            document.querySelectorAll(querySelectorStr).forEach((element) => {
+                element.style.backgroundColor = colorStr;
+            });
+        }
 
-        const button = document.querySelector("button")
-        console.log("button: ", button);
-        button.onclick = () => { darken('.primary-color') }
+        // Generate color palette
+        const primaryColor = generatePrimaryColor();
+        const primaryDarkColor = generateDarkerColor(primaryColor);
+        const primaryLightColor = generateLighterColor(primaryColor);
+
+        console.log('Colors: ', { primaryColor, primaryDarkColor, primaryLightColor });
+
+        // Assign colors
+        assignColor('.primary-color', primaryColor);
+        assignColor('.primary-dark-color', primaryDarkColor);
+        assignColor('.primary-light-color', primaryLightColor);
     }
 
     window.onload = function() {
@@ -60,13 +79,11 @@
     <h2>Hey, what's up?</h2>
 
     <div class='square primary-color'></div>
-    <div class='square'></div>
-    <div class='square'></div>
+    <div class='square primary-dark-color'></div>
+    <div class='square primary-light-color'></div>
     <div class='square'></div>
     <div class='square'></div>
 
     <p>More things to come!</p>
-
-    <button>Darken</button>
 </body>
 </html>
