@@ -37,6 +37,14 @@
             return chroma(colorStr).brighten().hex();
         }
 
+        // Get the accent color by adding 180 degrees for hue
+        function generateAccentColor(colorStr) {
+            const c = chroma(colorStr);
+            const hsl = c.hsl();
+            const new_hue = (hsl[0] + 180) % 360;
+            return chroma.hsl(new_hue, hsl[1], hsl[2]).toString();
+        }
+
         function darken(querySelectorStr) {
             console.log("DARKEN ", querySelectorStr)
             const elements = document.querySelectorAll(querySelectorStr);
@@ -60,13 +68,20 @@
         const primaryColor = generatePrimaryColor();
         const primaryDarkColor = generateDarkerColor(primaryColor);
         const primaryLightColor = generateLighterColor(primaryColor);
+        const accentColor = generateAccentColor(primaryColor);
+        const accentDarkColor = generateDarkerColor(accentColor);
+        const accentLightColor = generateLighterColor(accentColor);
 
-        console.log('Colors: ', { primaryColor, primaryDarkColor, primaryLightColor });
+        console.log('Primary Colors: ', { primaryColor, primaryDarkColor, primaryLightColor });
+        console.log('Accent Colors: ', { accentColor, accentDarkColor, accentLightColor });
 
         // Assign colors
         assignColor('.primary-color', primaryColor);
         assignColor('.primary-dark-color', primaryDarkColor);
         assignColor('.primary-light-color', primaryLightColor);
+        assignColor('.accent-color', accentColor);
+        assignColor('.accent-dark-color', accentDarkColor);
+        assignColor('.accent-light-color', accentLightColor);
     }
 
     window.onload = function() {
@@ -81,8 +96,9 @@
     <div class='square primary-color'></div>
     <div class='square primary-dark-color'></div>
     <div class='square primary-light-color'></div>
-    <div class='square'></div>
-    <div class='square'></div>
+    <div class='square accent-color'></div>
+    <div class='square accent-dark-color'></div>
+    <div class='square accent-light-color'></div>
 
     <p>More things to come!</p>
 </body>
