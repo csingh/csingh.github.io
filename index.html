@@ -9,31 +9,35 @@
         font-weight: 100;
         text-align: center;
     }
-    .fa {
-        margin-right: 5px;
+
+    .primary {
+        color: lightblue;
     }
     </style>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/chroma-js/2.4.2/chroma.min.js"></script>
     <script>
     function loaded() {
-        console.log("hello!");
+        console.log("Loaded!");
 
-        const darken = () => {
-            console.log("DARKEN")
-            const element = document.querySelector("h1");
-            const color = window.getComputedStyle(element).color
-            console.log("Original color: ", color)
-            const darkened_hex = chroma(color).darken().hex()
-            console.log("Darkened color: ", darkened_hex);
-            element.style.color = darkened_hex;
+        function darken(querySelectorStr) {
+            console.log("DARKEN ", querySelectorStr)
+            const elements = document.querySelectorAll(querySelectorStr);
+
+            elements.forEach((element) => {
+                const color = window.getComputedStyle(element).color
+                console.log("Original color: ", color)
+                const darkenedHex = chroma(color).darken().hex()
+                console.log("Darkened color: ", darkenedHex);
+                element.style.color = darkenedHex;
+            });
         }
 
         console.log("Darken: ", darken);
 
         const button = document.querySelector("button")
         console.log("button: ", button);
-        button.onclick = darken
+        button.onclick = () => { darken('.primary') }
     }
 
     window.onload = function() {
@@ -42,9 +46,9 @@
     </script>
 </head>
 <body>
-    <h1 style="color: lightblue">Chandeep Singh</h1>
+    <h1 class='primary'>Chandeep Singh</h1>
     <h2>Hey, what's up?</h2>
-    <p>More things to come!</p>
+    <p class='primary'>More things to come!</p>
 
     <button>Darken</button>
 </body>
