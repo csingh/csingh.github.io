@@ -10,9 +10,19 @@
         text-align: center;
     }
 
-    .primary {
-        color: lightblue;
+    .square {
+        height: 100px;
+        width: 100px;
+        outline: 1px solid black;
+        margin: 10px auto;
+        display: inline-block;
     }
+
+    .primary-color {
+        color: lightblue;
+        background-color: lightblue;
+    }
+    
     </style>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/chroma-js/2.4.2/chroma.min.js"></script>
@@ -25,11 +35,11 @@
             const elements = document.querySelectorAll(querySelectorStr);
 
             elements.forEach((element) => {
-                const color = window.getComputedStyle(element).color
+                const color = window.getComputedStyle(element).backgroundColor
                 console.log("Original color: ", color)
                 const darkenedHex = chroma(color).darken().hex()
                 console.log("Darkened color: ", darkenedHex);
-                element.style.color = darkenedHex;
+                element.style.backgroundColor = darkenedHex;
             });
         }
 
@@ -37,7 +47,7 @@
 
         const button = document.querySelector("button")
         console.log("button: ", button);
-        button.onclick = () => { darken('.primary') }
+        button.onclick = () => { darken('.primary-color') }
     }
 
     window.onload = function() {
@@ -46,9 +56,16 @@
     </script>
 </head>
 <body>
-    <h1 class='primary'>Chandeep Singh</h1>
+    <h1>Chandeep Singh</h1>
     <h2>Hey, what's up?</h2>
-    <p class='primary'>More things to come!</p>
+
+    <div class='square primary-color'></div>
+    <div class='square'></div>
+    <div class='square'></div>
+    <div class='square'></div>
+    <div class='square'></div>
+
+    <p>More things to come!</p>
 
     <button>Darken</button>
 </body>
