@@ -26,7 +26,8 @@
 
         function generatePrimaryColor() {
             // TODO: use chroma.random, and fudge color so that its "not too dark and not too light" so that we can generate darker and lighter alternatives. Can probably just adjust the luminance range?
-            return 'lightblue'
+            // return 'lightblue'
+            return chroma.random().toString();
         }
 
         function generateDarkerColor(colorStr) {
@@ -90,8 +91,7 @@
     </script>
 </head>
 <body>
-    <h1>Chandeep Singh</h1>
-    <h2>Hey, what's up?</h2>
+    <h1>Colour Palette Generator</h1>
 
     <div class='square primary-color'></div>
     <div class='square primary-dark-color'></div>
@@ -99,7 +99,5 @@
     <div class='square accent-color'></div>
     <div class='square accent-dark-color'></div>
     <div class='square accent-light-color'></div>
-
-    <p>More things to come!</p>
 </body>
 </html>
