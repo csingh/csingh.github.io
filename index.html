@@ -39,7 +39,7 @@
         }
 
         // Get the accent color by adding 180 degrees for hue
-        function generateAccentColor(colorStr) {
+        function generateComplementColor(colorStr) {
             const c = chroma(colorStr);
             const hsl = c.hsl();
             const new_hue = (hsl[0] + 180) % 360;
@@ -69,20 +69,20 @@
         const primaryColor = generatePrimaryColor();
         const primaryDarkColor = generateDarkerColor(primaryColor);
         const primaryLightColor = generateLighterColor(primaryColor);
-        const accentColor = generateAccentColor(primaryColor);
-        const accentDarkColor = generateDarkerColor(accentColor);
-        const accentLightColor = generateLighterColor(accentColor);
+        const complementColor = generateComplementColor(primaryColor);
+        const complementDarkColor = generateDarkerColor(complementColor);
+        const complementLightColor = generateLighterColor(complementColor);
 
         console.log('Primary Colors: ', { primaryColor, primaryDarkColor, primaryLightColor });
-        console.log('Accent Colors: ', { accentColor, accentDarkColor, accentLightColor });
+        console.log('Accent Colors: ', { complementColor, complementDarkColor, complementLightColor });
 
         // Assign colors
         assignColor('.primary-color', primaryColor);
         assignColor('.primary-dark-color', primaryDarkColor);
         assignColor('.primary-light-color', primaryLightColor);
-        assignColor('.accent-color', accentColor);
-        assignColor('.accent-dark-color', accentDarkColor);
-        assignColor('.accent-light-color', accentLightColor);
+        assignColor('.complement-color', complementColor);
+        assignColor('.complement-dark-color', complementDarkColor);
+        assignColor('.complement-light-color', complementLightColor);
     }
 
     window.onload = function() {
@@ -96,8 +96,12 @@
     <div class='square primary-color'></div>
     <div class='square primary-dark-color'></div>
     <div class='square primary-light-color'></div>
-    <div class='square accent-color'></div>
-    <div class='square accent-dark-color'></div>
-    <div class='square accent-light-color'></div>
+    <div class='square complement-color'></div>
+    <div class='square complement-dark-color'></div>
+    <div class='square complement-light-color'></div>
+    <div>
+        <div class='square complement-light-color'></div>
+        <div class='square complement-light-color'></div>
+    </div>
 </body>
 </html>
