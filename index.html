@@ -44,6 +44,20 @@
             return chroma.hsl(new_hue, hsl[1], hsl[2]).toString();
         }
 
+        function generateAccentOneColor(colorStr) {
+            const c = chroma(colorStr);
+            const hsl = c.hsl();
+            const new_hue = (hsl[0] + 120) % 360;
+            return chroma.hsl(new_hue, hsl[1], hsl[2]).toString();
+        }
+
+        function generateAccentTwoColor(colorStr) {
+            const c = chroma(colorStr);
+            const hsl = c.hsl();
+            const new_hue = (hsl[0] - 120) % 360;
+            return chroma.hsl(new_hue, hsl[1], hsl[2]).toString();
+        }
+
         function darken(querySelectorStr) {
             console.log("DARKEN ", querySelectorStr)
             const elements = document.querySelectorAll(querySelectorStr);
@@ -70,9 +84,11 @@
         const complementColor = generateComplementColor(primaryColor);
         const complementDarkColor = generateDarkerColor(complementColor);
         const complementLightColor = generateLighterColor(complementColor);
+        const accentOneColor = generateAccentOneColor(primaryColor);
+        const accentTwoColor = generateAccentTwoColor(primaryColor);
 
         console.log('Primary Colors: ', { primaryColor, primaryDarkColor, primaryLightColor });
-        console.log('Accent Colors: ', { complementColor, complementDarkColor, complementLightColor });
+        console.log('Accent Colors: ', { complementColor, complementDarkColor, complementLightColor, accentOneColor, accentTwoColor });
 
         // Assign colors
         assignColor('.primary-color', primaryColor);
@@ -81,6 +97,8 @@
         assignColor('.complement-color', complementColor);
         assignColor('.complement-dark-color', complementDarkColor);
         assignColor('.complement-light-color', complementLightColor);
+        assignColor('.accent-one-color', accentOneColor);
+        assignColor('.accent-two-color', accentTwoColor);
     }
 
     window.onload = function() {
@@ -98,8 +116,8 @@
     <div class='square complement-dark-color'></div>
     <div class='square complement-light-color'></div>
     <div>
-        <div class='square complement-light-color'></div>
-        <div class='square complement-light-color'></div>
+        <div class='square accent-one-color'></div>
+        <div class='square accent-two-color'></div>
     </div>
 </body>
 </html>
