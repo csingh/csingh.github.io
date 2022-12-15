@@ -25,8 +25,6 @@
         console.log("Loaded!");
 
         function generatePrimaryColor() {
-            // TODO: use chroma.random, and fudge color so that its "not too dark and not too light" so that we can generate darker and lighter alternatives. Can probably just adjust the luminance range?
-            // return 'lightblue'
             return chroma.random().toString();
         }
 
@@ -38,7 +36,7 @@
             return chroma(colorStr).brighten().hex();
         }
 
-        // Get the accent color by adding 180 degrees for hue
+        // Get the complement color by adding 180 degrees for hue
         function generateComplementColor(colorStr) {
             const c = chroma(colorStr);
             const hsl = c.hsl();
