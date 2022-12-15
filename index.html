@@ -25,15 +25,24 @@
         console.log("Loaded!");
 
         function generatePrimaryColor() {
-            return chroma.random().toString();
+            const seed = chroma.random();
+            const [hue, sat, lum, alpha] = seed.hsl();
+
+            // Constrain luminance to a range/value
+            const new_lum = 0.3 + (0.2 * lum)
+
+            // Constrain saturation to a range/value
+            const new_sat = 0.50 + (0.25 * sat)
+
+            return chroma.hsl(hue, new_sat, new_lum).toString();
         }
 
         function generateDarkerColor(colorStr) {
-            return chroma(colorStr).darken().hex();
+            return chroma(colorStr).darken(2).hex();
         }
 
         function generateLighterColor(colorStr) {
-            return chroma(colorStr).brighten().hex();
+            return chroma(colorStr).brighten(4).saturate(3).hex();
         }
 
         // Get the complement color by adding 180 degrees for hue
@@ -109,12 +118,14 @@
 <body>
     <h1>Colour Palette Generator</h1>
 
-    <div class='square primary-color'></div>
-    <div class='square primary-dark-color'></div>
-    <div class='square primary-light-color'></div>
-    <div class='square complement-color'></div>
-    <div class='square complement-dark-color'></div>
-    <div class='square complement-light-color'></div>
+    <div>
+        <div class='square primary-color'></div>
+        <div class='square primary-dark-color'></div>
+        <div class='square primary-light-color'></div>
+        <div class='square complement-color'></div>
+        <div class='square complement-dark-color'></div>
+        <div class='square complement-light-color'></div>
+    </div>
     <div>
         <div class='square accent-one-color'></div>
         <div class='square accent-two-color'></div>
