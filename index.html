@@ -4,11 +4,12 @@
     <title>Chandeep Singh</title>
 
     <style>
-    body {
+    /* body {
         font-family: "Roboto", "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
         font-weight: 100;
         text-align: center;
-    }
+        background-color: rgb(255, 255, 255);
+    } */
 
     .square {
         height: 100px;
@@ -20,7 +21,18 @@
     </style>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/chroma-js/2.4.2/chroma.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
     <script>
+    // tailwind.config = {
+    //     theme: {
+    //         extend: {
+    //         colors: {
+    //             clifford: '#da373d',
+    //         }
+    //         }
+    //     }
+    // }
+
     function loaded() {
         console.log("Loaded!");
 
@@ -115,10 +127,20 @@
     }
     </script>
 </head>
-<body>
-    <h1>Colour Palette Generator</h1>
+<body class="bg-gray-700">
+    <h1 class="text-center font-extrabold font-sans text-yellow-400 text-xl sm:text-2xl md:text-4xl">Colour Palette Generator</h1>
 
-    <div>
+    <!-- <div class="p-6 max-w-sm mx-auto bg-white rounded-xl shadow-lg flex items-center space-x-4">
+        <div class="shrink-0">
+          <img class="h-12 w-12" src="/img/logo.svg" alt="ChitChat Logo">
+        </div>
+        <div>
+          <div class="text-xl font-medium text-black">ChitChat</div>
+          <p class="text-slate-500">You have a new message!</p>
+        </div>
+      </div> -->
+
+    <div class="mx-auto">
         <div class='square primary-color'></div>
         <div class='square primary-dark-color'></div>
         <div class='square primary-light-color'></div>
