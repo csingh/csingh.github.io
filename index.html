@@ -1,12 +1,48 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta charset="utf-8">
+
     <title>Chandeep Singh</title>
 
-    <style>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Cambo&family=EB+Garamond&family=Source+Serif+Pro:ital,wght@0,400;0,600;0,700;0,900;1,600;1,900&display=swap" rel="stylesheet">
+    <style> @import url('https://fonts.googleapis.com/css2?family=Cambo&family=EB+Garamond&family=Source+Serif+Pro:ital,wght@0,400;0,600;0,700;0,900;1,600;1,900&display=swap'); </style>
+
+<style>
     #container {
-        width: calc(100vw - 20px);
-        height: calc(100vh - 20px);
+        width: calc(100vw - 10px);
+        height: calc(100vh - 10px);
+    }
+
+    body {
+        font-family: 'Cambo', serif;;
+    }
+    
+    h1 {
+        font-family: 'Source Serif Pro', serif;;
+        font-weight: 600;
+        font-style: italic;
+    }
+
+    h2, h3 {
+        font-family: 'EB Garamond', serif;
+    }
+
+
+    #intro-container {
+        /* outline: 5px solid red; */
+        width: 600px;
+    }
+
+    #intro-text {
+        /* outline: 2px solid green; */
+        width: 420px;
+        /* TODO: how can i align the intro text without setting this width manually according to the length of intro text? */
+    }
+
+    #name {
+        font-weight: 700;
     }
 
     .text-outline {
@@ -116,18 +152,19 @@
         console.log('Accent Colors: ', { complementColor, complementDarkColor, complementLightColor, accentOneColor, accentTwoColor });
 
         // Assign colors
-        assignBackgroundColor('.color-primary', primaryColor);
-        assignBackgroundColor('.color-primary-dark', primaryDarkColor);
-        assignBackgroundColor('.color-primary-light', primaryLightColor);
-        assignBackgroundColor('.color-complement', complementColor);
-        assignBackgroundColor('.color-complement-dark', complementDarkColor);
-        assignBackgroundColor('.color-complement-light', complementLightColor);
-        assignBackgroundColor('.accent-one-color', accentOneColor);
-        assignBackgroundColor('.accent-two-color', accentTwoColor);
+        assignColor('.color-primary', primaryColor);
+        assignColor('.color-primary-dark', primaryDarkColor);
+        assignColor('.color-primary-light', primaryLightColor);
+        assignColor('.color-complement', complementColor);
+        assignColor('.color-complement-dark', complementDarkColor);
+        assignColor('.color-complement-light', complementLightColor);
 
-        assignBackgroundColor('body', primaryDarkColor);
-        assignColor('h1', complementLightColor);
-        assignBackgroundColor('#container', primaryColor);
+        assignBackgroundColor('.background-color-primary', primaryColor);
+        assignBackgroundColor('.background-color-primary-dark', primaryDarkColor);
+        assignBackgroundColor('.background-color-primary-light', primaryLightColor);
+        assignBackgroundColor('.background-color-complement', complementColor);
+        assignBackgroundColor('.background-color-complement-dark', complementDarkColor);
+        assignBackgroundColor('.background-color-complement-light', complementLightColor);
     }
 
     window.onload = function() {
@@ -135,20 +172,26 @@
     }
     </script>
 </head>
-<body class="grid h-screen place-items-center">
-    <div id="container" class="">
-        <h1 class="text-center font-extrabold font-sans text-yellow-400 text-xl sm:text-2xl md:text-5xl">Chandeep Singh</h1>
+<body class="background-color-primary-dark grid h-screen place-items-center">
+    <div id="container" class="background-color-primary">
+        <div id="intro-container" class="mt-40 mx-auto">
+            <div id="intro-text" class="mx-auto">
+                <h1 class="color-complement text-5xl inline-block text-center">Hey! I'm <span id="name" class='color-complement-light inline-block'>Chandeep</span>,</h1>
+                <h2 class="color-complement text-2xl text-right">A full-stack software developer.</h2>
+            </div>
+            <p class="mt-12">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi vitae quam eget tortor placerat accumsan. Nulla non scelerisque nisl, sed vulputate justo. Suspendisse quis nisi feugiat, venenatis quam imperdiet, consequat orci.</p>
+        </div>
 
-        <div class="flex flex-row">
-            <div class='color-primary basis-1/3 h-40 text-outline-black text-sm text-center text-white text-outline'><p>Seed</p></div>
-            <div class='color-primary-dark basis-1/3 h-40 text-outline-black text-sm text-center text-white text-outline'>Seed darkened</div>
-            <div class='color-primary-light basis-1/3 h-40 text-outline-black text-sm text-center text-white text-outline'>Seed brightened</div>    
+        <!-- <div class="flex flex-row">
+            <div class='background-color-primary basis-1/3 h-40 text-outline-black text-sm text-center text-white text-outline'><p>Seed</p></div>
+            <div class='background-color-primary-dark basis-1/3 h-40 text-outline-black text-sm text-center text-white text-outline'>Seed darkened</div>
+            <div class='background-color-primary-light basis-1/3 h-40 text-outline-black text-sm text-center text-white text-outline'>Seed brightened</div>    
         </div>
         <div class="flex flex-row">
-            <div class='color-complement basis-1/3 h-40 text-outline-black text-sm text-center text-white text-outline'>Complement</div>
-            <div class='color-complement-dark basis-1/3 h-40 text-outline-black text-sm text-center text-white text-outline'>Complement darkened</div>
-            <div class='color-complement-light basis-1/3 h-40 text-outline-black text-sm text-center text-white text-outline'>Complement brightened</div>  
-        </div>
+            <div class='background-color-complement basis-1/3 h-40 text-outline-black text-sm text-center text-white text-outline'>Complement</div>
+            <div class='background-color-complement-dark basis-1/3 h-40 text-outline-black text-sm text-center text-white text-outline'>Complement darkened</div>
+            <div class='background-color-complement-light basis-1/3 h-40 text-outline-black text-sm text-center text-white text-outline'>Complement brightened</div>  
+        </div> -->
     </div>
 </body>
 </html>
