@@ -31,13 +31,15 @@
 
 
     #intro-container {
-        /* outline: 5px solid red; */
-        width: 500px;
+        outline: 5px solid red;
+        /* max-width: 800px; */
+        /* width: 90vw; */
     }
 
     #intro-text {
-        /* outline: 2px solid green; */
-        width: 420px;
+        outline: 10px solid green;
+        /* width: 80vw; */
+        /* max-width: 500px; */
         /* TODO: how can i align the intro text without setting this width manually according to the length of intro text? */
     }
 
@@ -174,12 +176,12 @@
 </head>
 <body class="background-color-primary-dark grid h-screen place-items-center">
     <div id="container" class="background-color-primary">
-        <div id="intro-container" class="mt-40 mx-auto">
-            <div id="intro-text" class="mx-auto">
-                <h1 class="color-primary-light text-5xl inline-block text-center">Hey! I'm <span id="name" class='color-complement-light inline-block'>Chandeep</span>,</h1>
-                <h2 class="color-complement text-2xl text-right">A full-stack software developer.</h2>
+        <div id="intro-container" class="mt-[20vh] mx-auto text-center max-w-screen-md">
+            <div id="intro-text" class="inline-block mx-auto inline-block">
+                <h1 class="color-primary-light text-7xl">Hey! I'm <span id="name" class='color-complement-light'>Chandeep</span>,</h1>
+                <h2 class="color-complement text-3xl text-right">A full-stack software developer.</h2>
             </div>
-            <p class="color-primary-dark mt-12 text-center">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi vitae quam eget tortor placerat accumsan. Nulla non scelerisque nisl, sed vulputate justo.</p>
+            <!-- <p class="color-primary-dark mt-12 text-center">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi vitae quam eget tortor placerat accumsan. Nulla non scelerisque nisl, sed vulputate justo.</p> -->
         </div>
 
         <div id="links-container" class="mt-40 text-center">
