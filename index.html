@@ -13,7 +13,7 @@
     #container {
         width: calc(100vw - 10px);
         height: calc(100vh - 10px);
-        background-color: #f7fafe;
+        /* background-color: #f7fafe; */
     }
 
     body {
@@ -94,6 +94,12 @@
             return chroma.hsl(hue, new_sat, new_lum).toString();
         }
 
+        function generateBackgroundColor(colorStr) {
+            const c = chroma(colorStr);
+            const hsl = c.hsl();
+            return chroma.hsl(hsl[0], 0.7, 0.97).toString();
+        }
+
         function generateDarkerColor(colorStr) {
             return chroma(colorStr).darken(2).hex();
         }
@@ -151,6 +157,7 @@
 
         // Generate color palette
         const primaryColor = generatePrimaryColor();
+        const backgroundColor = generateBackgroundColor(primaryColor);
         const primaryDarkColor = generateDarkerColor(primaryColor);
         const primaryLightColor = generateLighterColor(primaryColor);
         const complementColor = generateComplementColor(primaryColor);
@@ -161,6 +168,7 @@
 
         console.log('Primary Colors: ', { primaryColor, primaryDarkColor, primaryLightColor });
         console.log('Accent Colors: ', { complementColor, complementDarkColor, complementLightColor, accentOneColor, accentTwoColor });
+        console.log('Other Colors: ', { backgroundColor });
 
         // Assign colors
         assignColor('.color-primary', primaryColor);
@@ -176,6 +184,7 @@
         assignBackgroundColor('.background-color-complement', complementColor);
         assignBackgroundColor('.background-color-complement-dark', complementDarkColor);
         assignBackgroundColor('.background-color-complement-light', complementLightColor);
+        assignBackgroundColor('.background-color-main', backgroundColor);
     }
 
     window.onload = function() {
@@ -186,7 +195,7 @@
 <body class="grid h-screen place-items-center">
     <div id="grain-overlay"></div>
 
-    <div id="container" class="">
+    <div id="container" class="background-color-main">
         <div id="intro-container" class="mt-[20vh] mx-auto text-center max-w-screen-md">
             <div id="intro-text" class="inline-block mx-auto inline-block">
                 <h1 class="text-gray-600 italic text-3xl sm:text-5xl md:text-7xl">Hey! I'm <span id="name" class='text-gray-600 '>Chandeep</span>,</h1>
